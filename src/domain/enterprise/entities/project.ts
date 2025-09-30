@@ -3,7 +3,7 @@ import type { UniqueEntityID } from '@core/entities/unique-entity-id.ts'
 import type { Optional } from '@core/types/optional.ts'
 import type { ProjectType } from '@core/types/project-type.ts'
 
-interface ProjectProps {
+export interface ProjectProps {
   name: string
   description: string
   type: ProjectType
@@ -30,5 +30,9 @@ export class Project extends Entity<ProjectProps> {
     )
 
     return project
+  }
+
+  public get userId(): UniqueEntityID {
+    return this.props.userId
   }
 }

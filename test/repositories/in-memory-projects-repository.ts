@@ -7,4 +7,12 @@ export class InMemoryProjectsRepository implements ProjectsRespository {
   async create(project: Project): Promise<void> {
     this.projects.push(project)
   }
+
+  async findByUserId(userId: string): Promise<Project[]> {
+    const projects = this.projects.filter(
+      (project) => project.userId.toString() === userId
+    )
+
+    return projects
+  }
 }
