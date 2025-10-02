@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "node --env-file .env --watch src/server.ts",
-    "test": "vitest run",
+    "test": "dotenv -e .env vitest run",
     "lint": "@biomejs/biome check --write ./src",
     "db:reset": "",
     "db:migrate": ""
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
     "@faker-js/faker": "^10.0.0",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.5.0",
     "@vitest/coverage-v8": "3.2.4",
     "typescript": "^5.9.2",
@@ -27,6 +28,7 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "fastify": "^5.6.0",
     "fastify-type-provider-zod": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
     "zod": "^4.1.8"
   }
 }

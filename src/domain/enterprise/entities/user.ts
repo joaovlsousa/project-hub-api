@@ -26,4 +26,8 @@ export class User extends Entity<UserProps> {
 
     return user
   }
+
+  public get email(): string {
+    return this.props.email
+  }
 }
