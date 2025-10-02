@@ -8,8 +8,6 @@ interface CreateProjectUseCaseRequest {
   description: string
   type: ProjectType
   userId: string
-  imageUrl?: string
-  imageId?: string
   githubUrl: string
   deployUrl?: string
 }
@@ -28,8 +26,6 @@ export class CreateProjectUseCase {
     userId,
     githubUrl,
     deployUrl,
-    imageId,
-    imageUrl,
   }: CreateProjectUseCaseRequest): Promise<CreateProjectUseCaseResponse> {
     const project = Project.create({
       name,
@@ -38,8 +34,6 @@ export class CreateProjectUseCase {
       userId: new UniqueEntityID(userId),
       githubUrl,
       deployUrl,
-      imageId,
-      imageUrl,
     })
 
     await this.projectsRepository.create(project)
