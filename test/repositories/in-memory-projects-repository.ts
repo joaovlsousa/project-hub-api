@@ -1,4 +1,7 @@
-import type { ProjectsRespository } from '@domain/application/repositories/projects-repository.ts'
+import type {
+  ProjectsRespository,
+  UpdateImageParams,
+} from '@domain/application/repositories/projects-repository.ts'
 import type { Project } from '@domain/enterprise/entities/project.ts'
 
 export class InMemoryProjectsRepository implements ProjectsRespository {
@@ -14,5 +17,24 @@ export class InMemoryProjectsRepository implements ProjectsRespository {
     )
 
     return projects
+  }
+
+  async findById(projectId: string): Promise<Project | null> {
+    const project = this.projects.find(
+      (project) => project.id.toString() === projectId
+    )
+
+    return project ?? null
+  }
+
+  async updateImage(params: UpdateImageParams): Promise<void> {
+    const projectIndex = this.projects.findIndex(
+      (project) => project.id.toString() === params.projectId
+    )
+
+    if (projectIndex >= 0) {
+      this.projects[projectIndex].imageId = params.imageId
+      this.projects[projectIndex].imageUrl = params.imageUrl
+    }
   }
 }

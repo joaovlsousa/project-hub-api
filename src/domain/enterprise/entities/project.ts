@@ -35,4 +35,16 @@ export class Project extends Entity<ProjectProps> {
   public get userId(): UniqueEntityID {
     return this.props.userId
   }
+
+  public get imageId(): string | undefined {
+    return this.props.imageId
+  }
+
+  public set imageId(imageId: string) {
+    this.props.imageId = imageId
+  }
+
+  public set imageUrl(imageUrl: string) {
+    this.props.imageUrl = imageUrl
+  }
 }
