@@ -7,8 +7,8 @@
     "dev": "node --env-file .env --watch src/server.ts",
     "test": "dotenv -e .env vitest run",
     "lint": "@biomejs/biome check --write ./src",
-    "db:reset": "",
-    "db:migrate": ""
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
   },
   "keywords": [],
   "author": "",
@@ -19,18 +19,23 @@
     "@faker-js/faker": "^10.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.5.0",
+    "@types/pg": "^8.15.5",
     "@vitest/coverage-v8": "3.2.4",
     "dotenv-cli": "^10.0.0",
+    "drizzle-kit": "^0.31.5",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   },
   "dependencies": {
     "@fastify/cors": "^11.1.0",
     "@paralleldrive/cuid2": "^2.2.2",
+    "drizzle-orm": "^0.44.6",
+    "drizzle-zod": "^0.8.3",
     "fastify": "^5.6.0",
     "fastify-multer": "^2.0.3",
     "fastify-type-provider-zod": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
     "zod": "^4.1.8"
   }
 }
