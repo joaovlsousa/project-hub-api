@@ -32,16 +32,36 @@ export class Project extends Entity<ProjectProps> {
     return project
   }
 
+  public get name(): string {
+    return this.props.name
+  }
+
+  public get description(): string {
+    return this.props.description
+  }
+
+  public get type(): ProjectType {
+    return this.props.type
+  }
+
   public get userId(): UniqueEntityID {
     return this.props.userId
+  }
+
+  public get imageUrl(): string | undefined | null {
+    return this.props.imageUrl
   }
 
   public get imageId(): string | undefined | null {
     return this.props.imageId
   }
 
-  public get imageUrl(): string | undefined | null {
-    return this.props.imageUrl
+  public get githubUrl(): string {
+    return this.props.githubUrl
+  }
+
+  public get deployUrl(): string | undefined | null {
+    return this.props.deployUrl
   }
 
   public get createdAt(): Date {
