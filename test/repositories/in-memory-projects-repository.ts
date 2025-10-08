@@ -11,6 +11,16 @@ export class InMemoryProjectsRepository implements ProjectsRespository {
     this.projects.push(project)
   }
 
+  async save(project: Project): Promise<void> {
+    const projectIndex = this.projects.findIndex((project) =>
+      project.id.equals(project.id)
+    )
+
+    if (projectIndex >= 0) {
+      this.projects[projectIndex] = project
+    }
+  }
+
   async findByUserId(userId: string): Promise<Project[]> {
     const projects = this.projects.filter(
       (project) => project.userId.toString() === userId

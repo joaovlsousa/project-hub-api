@@ -8,12 +8,12 @@ export interface ProjectProps {
   description: string
   type: ProjectType
   userId: UniqueEntityID
-  imageUrl?: string
-  imageId?: string
+  imageUrl?: string | null
+  imageId?: string | null
   githubUrl: string
-  deployUrl?: string
+  deployUrl?: string | null
   createdAt: Date
-  updatedAt?: Date
+  updatedAt?: Date | null
 }
 
 export class Project extends Entity<ProjectProps> {
@@ -36,8 +36,20 @@ export class Project extends Entity<ProjectProps> {
     return this.props.userId
   }
 
-  public get imageId(): string | undefined {
+  public get imageId(): string | undefined | null {
     return this.props.imageId
+  }
+
+  public get imageUrl(): string | undefined | null {
+    return this.props.imageUrl
+  }
+
+  public get createdAt(): Date {
+    return this.props.createdAt
+  }
+
+  public get updatedAt(): Date | undefined | null {
+    return this.props.updatedAt
   }
 
   public set imageId(imageId: string) {

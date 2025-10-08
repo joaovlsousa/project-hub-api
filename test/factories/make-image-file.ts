@@ -9,8 +9,6 @@ export async function makeImageFile(): Promise<ImageFile> {
     stat(pathToImage),
   ])
 
-  console.log({ size })
-
   const image: ImageFile = {
     name: 'image_to_test',
     mimetype: 'image/png',
