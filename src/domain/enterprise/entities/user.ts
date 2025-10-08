@@ -8,7 +8,7 @@ export interface UserProps {
   username: string
   avatarUrl: string
   createdAt: Date
-  updatedAt?: Date
+  updatedAt?: Date | null
 }
 
 export class User extends Entity<UserProps> {
@@ -27,7 +27,27 @@ export class User extends Entity<UserProps> {
     return user
   }
 
+  public get name(): string {
+    return this.props.name
+  }
+
   public get email(): string {
     return this.props.email
+  }
+
+  public get username(): string {
+    return this.props.username
+  }
+
+  public get avatarUrl(): string {
+    return this.props.avatarUrl
+  }
+
+  public get createdAt(): Date {
+    return this.props.createdAt
+  }
+
+  public get updatedAt(): Date | undefined | null {
+    return this.props.updatedAt
   }
 }
