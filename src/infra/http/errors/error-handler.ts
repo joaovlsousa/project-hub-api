@@ -1,3 +1,4 @@
+import { BadGatewayError } from '@core/errors/bad-gateway-error.ts'
 import { BadRequestError } from '@core/errors/bad-request-error.ts'
 import { ForbiddenError } from '@core/errors/forbidden-error.ts'
 import { NotFoundError } from '@core/errors/not-found-error.ts'
@@ -34,6 +35,12 @@ export const errorHandler: FastifyErrorHandler = (error, _, reply) => {
 
   if (error instanceof NotFoundError) {
     return reply.status(404).send({
+      message: error.message,
+    })
+  }
+
+  if (error instanceof BadGatewayError) {
+    return reply.status(502).send({
       message: error.message,
     })
   }
