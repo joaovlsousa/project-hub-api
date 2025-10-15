@@ -54,13 +54,13 @@ export class GithubOAuthService implements OAuthService {
       name,
       avatar_url: avatarUrl,
       email,
-      username,
+      login: username,
     } = z
       .object({
         avatar_url: z.url(),
         name: z.string().nullable(),
         email: z.email().nullable(),
-        username: z.string(),
+        login: z.string(),
       })
       .parse(githubUserData)
 

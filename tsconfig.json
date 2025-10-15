@@ -19,6 +19,7 @@
     "paths": {
       "@core/*": ["./src/core/*"],
       "@domain/*": ["./src/domain/*"],
+      "@infra/*": ["./src/infra/*"],
       "@config/*": ["./src/config/*"],
       "@test/*": ["./test/*"]
     }

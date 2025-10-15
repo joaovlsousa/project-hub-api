@@ -1,0 +1,13 @@
+# Variables
+@baseUrl = http://localhost:3333
+@token = {{auth.response.body.$.token}}
+
+###
+
+# @name auth
+POST {{baseUrl}}/sessions/github
+Content-Type: application/json
+
+{
+  "code": "dc5a2d1b25c2e0cf1455"
+}
