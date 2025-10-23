@@ -21,16 +21,19 @@ export const authenticateWithGithubRoute: FastifyPluginAsyncZod = async (
           400: z.object({
             message: z.string(),
           }),
+          500: z.object({
+            message: z.string(),
+          }),
         },
       },
     },
     async (request, reply) => {
-      const { code } = request.body
-
       const authenticateWithGithubUseCase = new AuthenticateWithGithubUseCase(
         new GithubOAuthService(),
         new DrizzleUsersRepository()
       )
+
+      const { code } = request.body
 
       const { token } = await authenticateWithGithubUseCase.execute({
         code,

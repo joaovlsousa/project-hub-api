@@ -9,7 +9,7 @@ import { ZodError } from 'zod'
 type FastifyErrorHandler = FastifyInstance['errorHandler']
 
 export const errorHandler: FastifyErrorHandler = (error, _, reply) => {
-  if (error instanceof ZodError) {
+  if (error instanceof ZodError || error.validation) {
     return reply.status(400).send({
       message: 'Validation error',
     })

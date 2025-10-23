@@ -1,6 +1,7 @@
 # Variables
 @baseUrl = http://localhost:3333
 @token = {{auth.response.body.$.token}}
+@projectId = {{createProject.response.body.$.projectId}}
 
 ###
 
@@ -9,5 +10,19 @@ POST {{baseUrl}}/sessions/github
 Content-Type: application/json
 
 {
-  "code": "dc5a2d1b25c2e0cf1455"
+  "code": "c1a689397888c7cf3be0"
+}
+
+###
+
+# @name createProject
+POST {{baseUrl}}/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Project 1",
+  "description": "project description",
+  "type": "fullstack",
+  "githubUrl": "https://github.com/project1"
 }
