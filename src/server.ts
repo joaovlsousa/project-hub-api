@@ -1,6 +1,7 @@
 import { errorHandler } from '@infra/http/errors/error-handler.ts'
 import { authenticateWithGithubRoute } from '@infra/http/routes/authenticate-with-github.ts'
 import { createProjectRoute } from '@infra/http/routes/create-project.ts'
+import { findProjectsByUserIdRoute } from '@infra/http/routes/find-projects-by-user-id.ts'
 import fastify from 'fastify'
 import {
   serializerCompiler,
@@ -17,6 +18,7 @@ server.setSerializerCompiler(serializerCompiler)
 
 server.register(authenticateWithGithubRoute)
 server.register(createProjectRoute)
+server.register(findProjectsByUserIdRoute)
 
 server
   .listen({

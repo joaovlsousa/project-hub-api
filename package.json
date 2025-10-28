@@ -4,7 +4,7 @@
   "type": "module",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "tsx --env-file .env --watch src/server.ts",
+    "dev": "tsx watch --env-file=.env src/server.ts",
     "test": "dotenv -e .env vitest run",
     "lint": "@biomejs/biome check --write ./src",
     "db:migrate": "drizzle-kit migrate",

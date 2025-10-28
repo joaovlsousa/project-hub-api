@@ -26,3 +26,9 @@ Authorization: Bearer {{token}}
   "type": "fullstack",
   "githubUrl": "https://github.com/project1"
 }
+
+###
+
+# @name findProjectsByUserId
+GET {{baseUrl}}/projects
+Authorization: Bearer {{token}}
