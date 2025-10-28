@@ -13,6 +13,13 @@ interface UploadProjectImageUseCaseRequest {
 
 export class UploadProjectImageUseCase {
   private readonly MAX_IMAGE_SIZE = 5 * 1024 * 1024 // 5MB
+  private readonly IMAGE_MIMETYPES: string[] = [
+    'image/png',
+    'image/jpeg',
+    'image/jpg',
+    'image/webp',
+    'image/svg',
+  ]
 
   public constructor(
     private projectsRepository: ProjectsRespository,
@@ -25,7 +32,11 @@ export class UploadProjectImageUseCase {
     userId,
   }: UploadProjectImageUseCaseRequest): Promise<void> {
     if (image.size > this.MAX_IMAGE_SIZE) {
-      throw new BadRequestError(`Invalid image size: ${image.size}`)
+      throw new BadRequestError('Invalid image size')
+    }
+
+    if (!this.IMAGE_MIMETYPES.includes(image.mimetype)) {
+      throw new BadRequestError('Invalid mimetype')
     }
 
     const project = await this.projectsRepository.findById(projectId)

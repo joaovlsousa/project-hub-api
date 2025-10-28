@@ -7,7 +7,7 @@ import type {
 } from '@domain/application/services/storage-service.ts'
 import { UTApi, UTFile } from 'uploadthing/server'
 
-export class UplaodthingStorageService implements StorageService {
+export class UploadthingStorageService implements StorageService {
   private readonly uploadthingApi: UTApi
 
   constructor() {

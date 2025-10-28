@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "@fastify/cors": "^11.1.0",
+    "@fastify/multipart": "^9.3.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "drizzle-orm": "^0.44.6",
     "drizzle-zod": "^0.8.3",
     "fastify": "^5.6.0",
-    "fastify-multer": "^2.0.3",
     "fastify-type-provider-zod": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.3",
