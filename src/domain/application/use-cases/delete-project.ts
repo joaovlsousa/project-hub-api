@@ -1,6 +1,7 @@
 import { ForbiddenError } from '@core/errors/forbidden-error.ts'
 import { NotFoundError } from '@core/errors/not-found-error.ts'
 import type { ProjectsRespository } from '../repositories/projects-repository.ts'
+import type { StorageService } from '../services/storage-service.ts'
 
 interface DeleteProjectUseCaseRequest {
   userId: string
@@ -8,7 +9,10 @@ interface DeleteProjectUseCaseRequest {
 }
 
 export class DeleteProjectUseCase {
-  public constructor(private projectsRepository: ProjectsRespository) {}
+  public constructor(
+    private projectsRepository: ProjectsRespository,
+    private storageService: StorageService
+  ) {}
 
   async execute({
     projectId,
@@ -22,6 +26,10 @@ export class DeleteProjectUseCase {
 
     if (project.userId.toString() !== userId) {
       throw new ForbiddenError('You cannot perform this action')
+    }
+
+    if (project.imageId) {
+      await this.storageService.delete(project.imageId)
     }
 
     await this.projectsRepository.delete(projectId)

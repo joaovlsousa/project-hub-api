@@ -66,4 +66,8 @@ export class DrizzleProjectsRepository implements ProjectsRespository {
 
     await this.db.insert(projectsTable).values(raw)
   }
+
+  async delete(projectId: string): Promise<void> {
+    await this.db.delete(projectsTable).where(eq(projectsTable.id, projectId))
+  }
 }

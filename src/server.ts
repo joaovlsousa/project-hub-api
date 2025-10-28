@@ -3,6 +3,7 @@ import multipart from '@fastify/multipart'
 import { errorHandler } from '@infra/http/errors/error-handler.ts'
 import { authenticateWithGithubRoute } from '@infra/http/routes/authenticate-with-github.ts'
 import { createProjectRoute } from '@infra/http/routes/create-project.ts'
+import { deleteProjectRoute } from '@infra/http/routes/delete-project.ts'
 import { findProjectsByUserIdRoute } from '@infra/http/routes/find-projects-by-user-id.ts'
 import { updateProjectRoute } from '@infra/http/routes/update-project.ts'
 import { uploadProjectImageRoute } from '@infra/http/routes/upload-project-image.ts'
@@ -31,6 +32,7 @@ server.register(createProjectRoute)
 server.register(updateProjectRoute)
 server.register(findProjectsByUserIdRoute)
 server.register(uploadProjectImageRoute)
+server.register(deleteProjectRoute)
 
 server
   .listen({

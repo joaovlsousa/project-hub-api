@@ -24,7 +24,7 @@ Authorization: Bearer {{token}}
   "name": "Project 1",
   "description": "project description",
   "type": "fullstack",
-  "githubUrl": "https://github.com/project1"
+  "githubUrl": "https://github.com/sercomp"
 }
 
 ###
@@ -46,3 +46,9 @@ Authorization: Bearer {{token}}
   "type": "backend",
   "githubUrl": "https://github.com/project-updated"
 }
+
+###
+
+# @name deleteProject
+DELETE {{baseUrl}}/projects/{{projectId}}
+Authorization: Bearer {{token}}
