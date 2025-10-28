@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/36</span>
+                <span class='fraction'>0/40</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/36</span>
+                <span class='fraction'>0/40</span>
             </div>
         
             
@@ -110,25 +110,21 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -154,25 +150,35 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { BadRequestError } from '@core/errors/bad-request-error.ts'<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { BadGatewayError } from '@core/errors/bad-gateway-error.ts'<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+<span class="cstat-no" title="statement not covered" >import { BadRequestError } from '@core/errors/bad-request-error.ts'</span>
 <span class="cstat-no" title="statement not covered" >import { ForbiddenError } from '@core/errors/forbidden-error.ts'</span>
 <span class="cstat-no" title="statement not covered" >import { NotFoundError } from '@core/errors/not-found-error.ts'</span>
 <span class="cstat-no" title="statement not covered" >import { UnauthorizedError } from '@core/errors/unauthorized-error.ts'</span>
 import type { FastifyInstance } from 'fastify'
-<span class="cstat-no" title="statement not covered" >import { ZodError, z } from 'zod'</span>
+<span class="cstat-no" title="statement not covered" >import { ZodError } from 'zod'</span>
 &nbsp;
 type FastifyErrorHandler = FastifyInstance['errorHandler']
 &nbsp;
 <span class="cstat-no" title="statement not covered" >export const errorHandler: FastifyErrorHandler = (error, _, reply) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  if (error instanceof ZodError) {</span>
-<span class="cstat-no" title="statement not covered" >    const { errors: errorsList } = z.treeifyError(error)</span>
-&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (error instanceof ZodError || error.validation) {</span>
 <span class="cstat-no" title="statement not covered" >    return reply.status(400).send({</span>
 <span class="cstat-no" title="statement not covered" >      message: 'Validation error',</span>
-<span class="cstat-no" title="statement not covered" >      errors: errorsList,</span>
 <span class="cstat-no" title="statement not covered" >    })</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
@@ -200,6 +206,12 @@ type FastifyErrorHandler = FastifyInstance['errorHandler']
 <span class="cstat-no" title="statement not covered" >    })</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
+<span class="cstat-no" title="statement not covered" >  if (error instanceof BadGatewayError) {</span>
+<span class="cstat-no" title="statement not covered" >    return reply.status(502).send({</span>
+<span class="cstat-no" title="statement not covered" >      message: error.message,</span>
+<span class="cstat-no" title="statement not covered" >    })</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  console.error(error)</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return reply.status(500).send({ message: 'Internal server error' })</span>
@@ -211,7 +223,7 @@ type FastifyErrorHandler = FastifyInstance['errorHandler']
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-15T21:13:49.037Z
+                at 2025-10-28T22:47:48.591Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

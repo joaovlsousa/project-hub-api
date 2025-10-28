@@ -12,4 +12,5 @@ export interface ProjectsRespository {
   updateImage(params: UpdateImageParams): Promise<void>
   save(project: Project): Promise<void>
   create(project: Project): Promise<void>
+  delete(projectId: string): Promise<void>
 }

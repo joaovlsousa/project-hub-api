@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/domain/application/use-cases/update-project.ts</title>
+    <title>Code coverage report for src/infra/http/routes/find-projects-by-user-id.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/domain/application/use-cases</a> update-project.ts</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/infra/http/routes</a> find-projects-by-user-id.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/43</span>
+                <span class='fraction'>0/61</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/43</span>
+                <span class='fraction'>0/61</span>
             </div>
         
             
@@ -131,24 +131,6 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -163,15 +145,18 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -189,77 +174,92 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { UniqueEntityID } from '@core/entities/unique-entity-id.ts'<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
-<span class="cstat-no" title="statement not covered" >import { ForbiddenError } from '@core/errors/forbidden-error.ts'</span>
-<span class="cstat-no" title="statement not covered" >import { NotFoundError } from '@core/errors/not-found-error.ts'</span>
-import type { ProjectType } from '@core/types/project-type.ts'
-<span class="cstat-no" title="statement not covered" >import { Project } from '@domain/enterprise/entities/project.ts'</span>
-import type { ProjectsRespository } from '../repositories/projects-repository.ts'
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { FindProjectsByUserIdUseCase } from '@domain/application/use-cases/find-projects-by-user-id.ts'<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+<span class="cstat-no" title="statement not covered" >import { DrizzleProjectsRepository } from '@infra/database/drizzle/repositories/drizzle-projects-respository.ts'</span>
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
+<span class="cstat-no" title="statement not covered" >import { z } from 'zod'</span>
+<span class="cstat-no" title="statement not covered" >import { authMiddleware } from '../middlewares/auth-middleware.ts'</span>
 &nbsp;
-interface UpdateProjectUseCaseRequest {
-  projectId: string
-  userId: string
-  name: string
-  description: string
-  type: ProjectType
-  githubUrl: string
-  deployUrl?: string
-}
-&nbsp;
-interface UpdateProjectUseCaseResponse {
-  project: Project
-}
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export class UpdateProjectUseCase {</span>
-<span class="cstat-no" title="statement not covered" >  public constructor(private projectsRepository: ProjectsRespository) {}</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  async execute({</span>
-<span class="cstat-no" title="statement not covered" >    projectId,</span>
-<span class="cstat-no" title="statement not covered" >    name,</span>
-<span class="cstat-no" title="statement not covered" >    description,</span>
-<span class="cstat-no" title="statement not covered" >    type,</span>
-<span class="cstat-no" title="statement not covered" >    userId,</span>
-<span class="cstat-no" title="statement not covered" >    githubUrl,</span>
-<span class="cstat-no" title="statement not covered" >    deployUrl,</span>
-<span class="cstat-no" title="statement not covered" >  }: UpdateProjectUseCaseRequest): Promise&lt;UpdateProjectUseCaseResponse&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const project = await this.projectsRepository.findById(projectId)</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!project) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new NotFoundError('Project not found')</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (project.userId.toString() !== userId) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new ForbiddenError('You cannot perform this action')</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    const projectUpdated = Project.create(</span>
-<span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        name,</span>
-<span class="cstat-no" title="statement not covered" >        description,</span>
-<span class="cstat-no" title="statement not covered" >        type,</span>
-<span class="cstat-no" title="statement not covered" >        userId: new UniqueEntityID(userId),</span>
-<span class="cstat-no" title="statement not covered" >        githubUrl,</span>
-<span class="cstat-no" title="statement not covered" >        deployUrl,</span>
-<span class="cstat-no" title="statement not covered" >        imageId: project.imageId,</span>
-<span class="cstat-no" title="statement not covered" >        imageUrl: project.imageUrl,</span>
-<span class="cstat-no" title="statement not covered" >        createdAt: project.createdAt,</span>
-<span class="cstat-no" title="statement not covered" >        updatedAt: project.updatedAt,</span>
+<span class="cstat-no" title="statement not covered" >export const findProjectsByUserIdRoute: FastifyPluginAsyncZod = async (app) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  app.get(</span>
+<span class="cstat-no" title="statement not covered" >    '/projects',</span>
+<span class="cstat-no" title="statement not covered" >    {</span>
+<span class="cstat-no" title="statement not covered" >      schema: {</span>
+<span class="cstat-no" title="statement not covered" >        response: {</span>
+<span class="cstat-no" title="statement not covered" >          200: z.object({</span>
+<span class="cstat-no" title="statement not covered" >            projects: z.array(</span>
+<span class="cstat-no" title="statement not covered" >              z.object({</span>
+<span class="cstat-no" title="statement not covered" >                id: z.cuid2(),</span>
+<span class="cstat-no" title="statement not covered" >                name: z.string(),</span>
+<span class="cstat-no" title="statement not covered" >                description: z.string(),</span>
+<span class="cstat-no" title="statement not covered" >                type: z.union([</span>
+<span class="cstat-no" title="statement not covered" >                  z.literal('frontend'),</span>
+<span class="cstat-no" title="statement not covered" >                  z.literal('backend'),</span>
+<span class="cstat-no" title="statement not covered" >                  z.literal('fullstack'),</span>
+<span class="cstat-no" title="statement not covered" >                ]),</span>
+<span class="cstat-no" title="statement not covered" >                imageUrl: z.httpUrl().nullable(),</span>
+<span class="cstat-no" title="statement not covered" >                githubUrl: z.httpUrl(),</span>
+<span class="cstat-no" title="statement not covered" >                deployUrl: z.httpUrl().nullable(),</span>
+<span class="cstat-no" title="statement not covered" >                createdAt: z.date(),</span>
+<span class="cstat-no" title="statement not covered" >                updatedAt: z.date().nullable(),</span>
+<span class="cstat-no" title="statement not covered" >              })</span>
+<span class="cstat-no" title="statement not covered" >            ),</span>
+<span class="cstat-no" title="statement not covered" >          }),</span>
+<span class="cstat-no" title="statement not covered" >          401: z.object({</span>
+<span class="cstat-no" title="statement not covered" >            message: z.string(),</span>
+<span class="cstat-no" title="statement not covered" >          }),</span>
+<span class="cstat-no" title="statement not covered" >          500: z.object({</span>
+<span class="cstat-no" title="statement not covered" >            message: z.string(),</span>
+<span class="cstat-no" title="statement not covered" >          }),</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >      project.id</span>
-<span class="cstat-no" title="statement not covered" >    )</span>
+<span class="cstat-no" title="statement not covered" >      preHandler: [authMiddleware],</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    async (request, reply) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      const userId = request.getCurrentUserId()</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    await this.projectsRepository.save(projectUpdated)</span>
+<span class="cstat-no" title="statement not covered" >      const findProjectsByUserIdUseCase = new FindProjectsByUserIdUseCase(</span>
+<span class="cstat-no" title="statement not covered" >        new DrizzleProjectsRepository()</span>
+<span class="cstat-no" title="statement not covered" >      )</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return {</span>
-<span class="cstat-no" title="statement not covered" >      project: projectUpdated,</span>
+<span class="cstat-no" title="statement not covered" >      const { projects } = await findProjectsByUserIdUseCase.execute({ userId })</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      return reply.status(200).send({</span>
+<span class="cstat-no" title="statement not covered" >        projects: projects.map((project) =&gt; ({</span>
+<span class="cstat-no" title="statement not covered" >          id: project.id.toString(),</span>
+<span class="cstat-no" title="statement not covered" >          name: project.name,</span>
+<span class="cstat-no" title="statement not covered" >          description: project.description,</span>
+<span class="cstat-no" title="statement not covered" >          type: project.type,</span>
+<span class="cstat-no" title="statement not covered" >          imageUrl: project.imageUrl ?? null,</span>
+<span class="cstat-no" title="statement not covered" >          githubUrl: project.githubUrl,</span>
+<span class="cstat-no" title="statement not covered" >          deployUrl: project.deployUrl ?? null,</span>
+<span class="cstat-no" title="statement not covered" >          createdAt: project.createdAt,</span>
+<span class="cstat-no" title="statement not covered" >          updatedAt: project.updatedAt ?? null,</span>
+<span class="cstat-no" title="statement not covered" >        })),</span>
+<span class="cstat-no" title="statement not covered" >      })</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" >  )</span>
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 

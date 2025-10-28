@@ -47,4 +47,10 @@ export class InMemoryProjectsRepository implements ProjectsRespository {
       this.projects[projectIndex].imageUrl = params.imageUrl
     }
   }
+
+  async delete(projectId: string): Promise<void> {
+    this.projects = this.projects.filter(
+      (project) => project.id.toString() !== projectId
+    )
+  }
 }
