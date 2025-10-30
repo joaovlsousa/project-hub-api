@@ -11,7 +11,6 @@ API backend para gerenciamento de projetos pessoais/portfolio. Este repositório
 - Tecnologias utilizadas
 - Diagrama do fluxo principal
 - Como executar a aplicação (guia rápido)
-- Observações e próximos passos
 
 ---
 
@@ -22,7 +21,6 @@ O objetivo desta API é servir como backend para um pequeno sistema de gerenciam
 ## Arquitetura
 
 O projeto segue os princípios da Clean Architecture (arquitetura em camadas), com separação clara entre:
-
 - Domain (entidades e regras de negócio): `src/domain/enterprise` e `src/domain/application`.
 - Use-cases (casos de uso): código orquestrador que implementa as regras de aplicação (ex.: `authenticate-with-github`, `create-project`).
 - Interfaces/Repositories (contratos): definem como a camada de domínio se comunica com infra (ex.: `projects-repository.ts`, `users-repository.ts`).
