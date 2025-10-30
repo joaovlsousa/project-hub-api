@@ -9,6 +9,8 @@ export const findProjectsByUserIdRoute: FastifyPluginAsyncZod = async (app) => {
     '/projects',
     {
       schema: {
+        summary: 'Get projects by user id',
+        tags: ['Projects'],
         response: {
           200: z.object({
             projects: z.array(

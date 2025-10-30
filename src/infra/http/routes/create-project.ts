@@ -9,6 +9,8 @@ export const createProjectRoute: FastifyPluginAsyncZod = async (app) => {
     '/projects',
     {
       schema: {
+        summary: 'Create a project',
+        tags: ['Projects'],
         body: z.object({
           name: z.string().min(1),
           description: z.string().min(1),

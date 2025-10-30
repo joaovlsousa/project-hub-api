@@ -12,11 +12,13 @@ export const uploadProjectImageRoute: FastifyPluginAsyncZod = async (app) => {
     '/projects/:projectId/upload',
     {
       schema: {
+        summary: 'Upload a project image',
+        tags: ['Projects'],
         params: z.object({
           projectId: z.cuid2(),
         }),
         response: {
-          204: z.null(),
+          204: z.void(),
           400: z.object({
             message: z.string(),
           }),

@@ -10,11 +10,13 @@ export const deleteProjectRoute: FastifyPluginAsyncZod = async (app) => {
     '/projects/:projectId',
     {
       schema: {
+        summary: 'Delete a project',
+        tags: ['Projects'],
         params: z.object({
           projectId: z.cuid2(),
         }),
         response: {
-          204: z.null(),
+          204: z.void(),
           401: z.object({
             message: z.string(),
           }),

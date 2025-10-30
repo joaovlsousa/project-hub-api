@@ -9,6 +9,8 @@ export const updateProjectRoute: FastifyPluginAsyncZod = async (app) => {
     '/projects/:projectId',
     {
       schema: {
+        summary: 'Update a project',
+        tags: ['Projects'],
         params: z.object({
           projectId: z.cuid2(),
         }),
@@ -24,7 +26,7 @@ export const updateProjectRoute: FastifyPluginAsyncZod = async (app) => {
           deployUrl: z.httpUrl().optional(),
         }),
         response: {
-          204: z.null(),
+          204: z.void(),
           400: z.object({
             message: z.string(),
           }),
