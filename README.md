@@ -21,6 +21,7 @@ O objetivo desta API é servir como backend para um pequeno sistema de gerenciam
 ## Arquitetura
 
 O projeto segue os princípios da Clean Architecture (arquitetura em camadas), com separação clara entre:
+
 - Domain (entidades e regras de negócio): `src/domain/enterprise` e `src/domain/application`.
 - Use-cases (casos de uso): código orquestrador que implementa as regras de aplicação (ex.: `authenticate-with-github`, `create-project`).
 - Interfaces/Repositories (contratos): definem como a camada de domínio se comunica com infra (ex.: `projects-repository.ts`, `users-repository.ts`).
@@ -61,28 +62,44 @@ DDD (Domain-Driven Design):
 
 ---
 
-## Diagrama do fluxo principal
+## Diagrama do fluxo principal (Upload de imagem)
 
-O principal fluxo do sistema é a autenticação com GitHub seguida da criação/uso de um JWT e acesso aos casos de uso de projetos. Abaixo está um diagrama em Mermaid que descreve esse fluxo.
+O diagrama abaixo mostra o fluxo do caso de uso "fazer upload de imagem de um projeto". Ele segue a sequência real implementada em `src/domain/application/use-cases/upload-project-image.ts` e nas integrações em `src/infra`.
 
 ```mermaid
-flowchart TD
-	A[Cliente (browser/app)] -->|1. GET /auth/github| B[API - rota de autenticação]
-	B -->|2. Redireciona para GitHub OAuth| C[GitHub]
-	C -->|3. User autoriza e GitHub redireciona com `code`| B
-	B -->|4. Troca `code` por token e dados do usuário| D[Service: GitHubOAuthService]
-	D -->|5. Obtém dados públicos do usuário| E[Repositorio de Usuários]
-	E -->|6. Cria/atualiza usuário no banco| F[Database (Drizzle/Postgres)]
-	F -->|7. Retorna user entity| E
-	D -->|8. Emite JWT (via JwtService)| G[JwtService]
-	G -->|9. Retorna JWT| B
-	B -->|10. Responde ao cliente com JWT| A
-	A -->|11. Requisições autenticadas com Authorization: Bearer <token>| H[Rotas protegidas (ex.: /projects)]
-	H -->|12. Executor do caso de uso| I[Use-cases: Create/Read/Update/Delete Project]
-	I -->|13. Persiste/consulta| F
+sequenceDiagram
+  participant C as Cliente
+  participant API as API
+  participant Auth as AuthMiddleware
+  participant UC as UploadProjectImageUseCase
+  participant Repo as DrizzleProjectsRepository
+  participant Storage as UploadthingStorageService
+  participant DB as Postgres (Drizzle)
+
+  C->>API: PATCH /projects/:projectId/upload (file + Authorization)
+  API->>Auth: validar JWT
+  Auth-->>API: userId
+  API->>UC: execute({ projectId, userId, image })
+  UC->>Repo: findById(projectId)
+  Repo->>DB: SELECT * FROM projects WHERE id = projectId
+  DB-->>Repo: project row
+  Repo-->>UC: project
+  UC->>UC: validar proprietário, tamanho e mimetype
+  alt projeto já tem imagem
+    UC->>Storage: delete(existingImageId)
+    Storage-->>UC: success
+  end
+  UC->>Storage: upload(image)
+  Storage-->>UC: { imageId, imageUrl }
+  UC->>Repo: updateImage({ projectId, imageId, imageUrl })
+  Repo->>DB: UPDATE projects SET imageId = ..., imageUrl = ... WHERE id = projectId
+  DB-->>Repo: OK
+  Repo-->>UC: OK
+  UC-->>API: sucesso
+  API-->>C: 204 No Content
 ```
 
-Observação: o diagrama foca na autenticação + uso do JWT para acessar os casos de uso relacionados a projetos.
+Observação: o Use Case (`UploadProjectImageUseCase`) orquestra as chamadas ao repositório e ao serviço de storage. Se já existir uma imagem, o caso de uso requisita sua remoção antes de fazer o upload da nova. Em caso de falhas no serviço de storage, o código lança `BadGatewayError`; se o projeto não for encontrado ou se o usuário não for o proprietário do projeto, são lançados `NotFoundError` ou `ForbiddenError`, respectivamente.
 
 ---
 
@@ -95,7 +112,7 @@ Observação: o diagrama foca na autenticação + uso do JWT para acessar os cas
 
 2) Variáveis de ambiente
 
-Crie um arquivo `.env` na raiz, copie e cole as variáveis do arquivo `.env.example`
+Crie um arquivo `.env` na raiz, copie e cole as variáveis do arquivo `.env.example`.
 
 3) Subir o banco de dados localmente (Docker Compose)
 
@@ -115,11 +132,9 @@ pnpm install
 
 5) Rodar migrações (se aplicável)
 
-
 ```bash
 pnpm run db:migrate
 ```
-
 
 6) Rodar em modo de desenvolvimento
 
@@ -132,3 +147,5 @@ pnpm run dev
 ```bash
 pnpm run test
 ```
+
+---
