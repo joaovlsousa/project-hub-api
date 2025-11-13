@@ -2,10 +2,12 @@ import { Entity } from '@core/entities/entity.ts'
 import type { UniqueEntityID } from '@core/entities/unique-entity-id.ts'
 import type { Optional } from '@core/types/optional.ts'
 import type { ProjectType } from '@core/types/project-type.ts'
+import type { Description } from './description.ts'
+import type { Name } from './name.ts'
 
 export interface ProjectProps {
-  name: string
-  description: string
+  name: Name
+  description: Description
   type: ProjectType
   userId: UniqueEntityID
   imageUrl?: string | null
@@ -32,11 +34,11 @@ export class Project extends Entity<ProjectProps> {
     return project
   }
 
-  public get name(): string {
+  public get name(): Name {
     return this.props.name
   }
 
-  public get description(): string {
+  public get description(): Description {
     return this.props.description
   }
 

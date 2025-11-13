@@ -12,8 +12,8 @@ export const createProjectRoute: FastifyPluginAsyncZod = async (app) => {
         summary: 'Create a project',
         tags: ['Projects'],
         body: z.object({
-          name: z.string().min(1),
-          description: z.string().min(1),
+          name: z.string().min(1).max(50),
+          description: z.string().min(1).max(300),
           type: z.union([
             z.literal('frontend'),
             z.literal('backend'),

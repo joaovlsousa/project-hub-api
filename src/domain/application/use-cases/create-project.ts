@@ -1,5 +1,7 @@
 import { UniqueEntityID } from '@core/entities/unique-entity-id.ts'
 import type { ProjectType } from '@core/types/project-type.ts'
+import { Description } from '@domain/enterprise/entities/description.ts'
+import { Name } from '@domain/enterprise/entities/name.ts'
 import { Project } from '@domain/enterprise/entities/project.ts'
 import type { ProjectsRespository } from '../repositories/projects-repository.ts'
 
@@ -28,8 +30,8 @@ export class CreateProjectUseCase {
     deployUrl,
   }: CreateProjectUseCaseRequest): Promise<CreateProjectUseCaseResponse> {
     const project = Project.create({
-      name,
-      description,
+      name: new Name(name),
+      description: new Description(description),
       type,
       userId: new UniqueEntityID(userId),
       githubUrl,

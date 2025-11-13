@@ -1,4 +1,6 @@
 import { UniqueEntityID } from '@core/entities/unique-entity-id.ts'
+import { Description } from '@domain/enterprise/entities/description.ts'
+import { Name } from '@domain/enterprise/entities/name.ts'
 import { Project } from '@domain/enterprise/entities/project.ts'
 import type { projectsTable } from '../schema.ts'
 
@@ -8,8 +10,8 @@ export class DrizzleProjectsMapper {
   static toDrizzle(project: Project): RawProject {
     return {
       id: project.id.toString(),
-      name: project.name,
-      description: project.description,
+      name: project.name.toString(),
+      description: project.description.toString(),
       type: project.type,
       userId: project.userId.toString(),
       imageId: project.imageId ?? null,
@@ -24,8 +26,8 @@ export class DrizzleProjectsMapper {
   static toDomain(raw: RawProject): Project {
     return Project.create(
       {
-        name: raw.name,
-        description: raw.description,
+        name: new Name(raw.name),
+        description: new Description(raw.description),
         type: raw.type,
         userId: new UniqueEntityID(raw.userId),
         imageId: raw.imageId,

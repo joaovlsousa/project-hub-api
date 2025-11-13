@@ -1,4 +1,6 @@
 import { UniqueEntityID } from '@core/entities/unique-entity-id.ts'
+import { Description } from '@domain/enterprise/entities/description.ts'
+import { Name } from '@domain/enterprise/entities/name.ts'
 import {
   Project,
   type ProjectProps,
@@ -11,8 +13,8 @@ export function makeProject(
 ): Project {
   const project = Project.create(
     {
-      name: faker.person.fullName(),
-      description: faker.lorem.sentence(2),
+      name: new Name(faker.person.fullName()),
+      description: new Description(faker.lorem.sentence(2)),
       githubUrl: faker.internet.url(),
       type: 'fullstack',
       userId: new UniqueEntityID('user-id'),

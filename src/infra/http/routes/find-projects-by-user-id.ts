@@ -53,8 +53,8 @@ export const findProjectsByUserIdRoute: FastifyPluginAsyncZod = async (app) => {
       return reply.status(200).send({
         projects: projects.map((project) => ({
           id: project.id.toString(),
-          name: project.name,
-          description: project.description,
+          name: project.name.toString(),
+          description: project.description.toString(),
           type: project.type,
           imageUrl: project.imageUrl ?? null,
           githubUrl: project.githubUrl,

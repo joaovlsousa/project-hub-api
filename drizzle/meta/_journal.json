@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1759931517535,
-      "tag": "0000_mighty_grandmaster",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1759934236565,
-      "tag": "0001_daffy_charles_xavier",
+      "when": 1763062570200,
+      "tag": "0000_clumsy_doctor_octopus",
       "breakpoints": true
     }
   ]

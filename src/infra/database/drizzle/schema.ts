@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { pgEnum, pgTable, text, timestamp, varchar } from 'drizzle-orm/pg-core'
 
 export const projectType = pgEnum('project_type', [
   'frontend',
@@ -11,25 +11,25 @@ export const usersTable = pgTable('users', {
   name: text().notNull(),
   email: text().notNull().unique(),
   username: text().notNull().unique(),
-  avatarUrl: text('avatar_url').notNull(),
-  createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at'),
+  avatarUrl: text().notNull(),
+  createdAt: timestamp().notNull(),
+  updatedAt: timestamp(),
 })
 
 export const projectsTable = pgTable('projects', {
   id: text().primaryKey(),
-  name: text().notNull(),
-  description: text().notNull(),
+  name: varchar({ length: 50 }).notNull(),
+  description: varchar({ length: 300 }).notNull(),
   type: projectType().notNull(),
-  userId: text('user_id')
+  userId: text()
     .notNull()
     .references(() => usersTable.id, {
       onDelete: 'cascade',
     }),
-  imageUrl: text('image_url'),
-  imageId: text('image_id'),
-  githubUrl: text('github_url').notNull(),
-  deployUrl: text('deploy_url'),
-  createdAt: timestamp('created_at').notNull(),
-  updatedAt: timestamp('updated_at'),
+  imageUrl: text(),
+  imageId: text(),
+  githubUrl: text().notNull(),
+  deployUrl: text(),
+  createdAt: timestamp().notNull(),
+  updatedAt: timestamp(),
 })

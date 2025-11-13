@@ -10,7 +10,7 @@ POST {{baseUrl}}/sessions/github
 Content-Type: application/json
 
 {
-  "code": "c1a689397888c7cf3be0"
+  "code": "e60b8fd1e924a0d1e067"
 }
 
 ###

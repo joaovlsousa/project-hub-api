@@ -1,5 +1,5 @@
 {
-  "name": "project-hub-api",
+  "name": "psoft-hub-api",
   "version": "1.0.0",
   "type": "module",
   "main": "src/server.ts",

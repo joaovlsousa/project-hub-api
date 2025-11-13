@@ -1,8 +1,8 @@
 CREATE TYPE "public"."project_type" AS ENUM('frontend', 'backend', 'fullstack');--> statement-breakpoint
 CREATE TABLE "projects" (
 	"id" text PRIMARY KEY NOT NULL,
-	"name" text NOT NULL,
-	"description" text NOT NULL,
+	"name" varchar(50) NOT NULL,
+	"description" varchar(300) NOT NULL,
 	"type" "project_type" NOT NULL,
 	"user_id" text NOT NULL,
 	"image_url" text,
@@ -18,7 +18,7 @@ CREATE TABLE "users" (
 	"name" text NOT NULL,
 	"email" text NOT NULL,
 	"username" text NOT NULL,
-	"avatar_url" text,
+	"avatar_url" text NOT NULL,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp,
 	CONSTRAINT "users_email_unique" UNIQUE("email"),

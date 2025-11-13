@@ -1,16 +1,15 @@
-version: '3.7'
-
 services:
   postgres:
+    container_name: psofthub_db
     image: bitnami/postgresql:latest
     ports:
       - '5432:5432'
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=projecthub
+      - POSTGRES_DB=psofthub
     volumes:
-      - projecthub_pg_data:/bitnami/postgresql
+      - psofthub_pg_data:/bitnami/postgresql
 
 volumes:
-  projecthub_pg_data:
+  psofthub_pg_data:

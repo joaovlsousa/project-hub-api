@@ -1,5 +1,5 @@
 {
-  "id": "5e298bc5-c4dc-42aa-b384-b2742c0eb276",
+  "id": "fca93186-dc89-4e33-a2e6-5f625d61e698",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -16,13 +16,13 @@
         },
         "name": {
           "name": "name",
-          "type": "text",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": true
         },
         "description": {
           "name": "description",
-          "type": "text",
+          "type": "varchar(300)",
           "primaryKey": false,
           "notNull": true
         },
@@ -130,7 +130,7 @@
           "name": "avatar_url",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
