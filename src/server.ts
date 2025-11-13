@@ -5,8 +5,9 @@ import { errorHandler } from '@infra/http/errors/error-handler.ts'
 import { authenticateWithGithubRoute } from '@infra/http/routes/authenticate-with-github.ts'
 import { createProjectRoute } from '@infra/http/routes/create-project.ts'
 import { deleteProjectRoute } from '@infra/http/routes/delete-project.ts'
-import { findProjectsByIdRoute } from '@infra/http/routes/find-projects-by-id.ts'
+import { findProjectByIdRoute } from '@infra/http/routes/find-project-by-id.ts'
 import { findProjectsByUserIdRoute } from '@infra/http/routes/find-projects-by-user-id.ts'
+import { getProfileRoute } from '@infra/http/routes/get-profile.ts'
 import { updateProjectRoute } from '@infra/http/routes/update-project.ts'
 import { uploadProjectImageRoute } from '@infra/http/routes/upload-project-image.ts'
 import ScalarApiReference from '@scalar/fastify-api-reference'
@@ -51,7 +52,8 @@ server.register(authenticateWithGithubRoute)
 server.register(createProjectRoute)
 server.register(updateProjectRoute)
 server.register(findProjectsByUserIdRoute)
-server.register(findProjectsByIdRoute)
+server.register(findProjectByIdRoute)
+server.register(getProfileRoute)
 server.register(uploadProjectImageRoute)
 server.register(deleteProjectRoute)
 

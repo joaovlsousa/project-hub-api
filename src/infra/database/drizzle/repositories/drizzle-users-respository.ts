@@ -31,4 +31,17 @@ export class DrizzleUsersRepository implements UsersRespository {
 
     return DrizzleUsersMapper.toDomain(raw)
   }
+
+  async findById(userId: string): Promise<User | null> {
+    const [raw] = await this.db
+      .select()
+      .from(usersTable)
+      .where(eq(usersTable.id, userId))
+
+    if (!raw) {
+      return null
+    }
+
+    return DrizzleUsersMapper.toDomain(raw)
+  }
 }

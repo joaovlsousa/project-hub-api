@@ -15,6 +15,12 @@ Content-Type: application/json
 
 ###
 
+# @name getProfile
+GET {{baseUrl}}/profile
+Authorization: Bearer {{token}}
+
+###
+
 # @name createProject
 POST {{baseUrl}}/projects
 Content-Type: application/json

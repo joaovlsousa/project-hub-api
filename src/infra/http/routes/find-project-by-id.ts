@@ -4,7 +4,7 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { authMiddleware } from '../middlewares/auth-middleware.ts'
 
-export const findProjectsByIdRoute: FastifyPluginAsyncZod = async (app) => {
+export const findProjectByIdRoute: FastifyPluginAsyncZod = async (app) => {
   app.get(
     '/projects/:projectId',
     {
