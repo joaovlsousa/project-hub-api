@@ -35,6 +35,12 @@ Authorization: Bearer {{token}}
 
 ###
 
+# @name findProjectById
+GET {{baseUrl}}/projects/{{projectId}}
+Authorization: Bearer {{token}}
+
+###
+
 # @name updateProject
 PUT {{baseUrl}}/projects/{{projectId}}
 Content-Type: application/json
